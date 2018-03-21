@@ -9,25 +9,41 @@
 </head>
 <body ng-app="pokedex">
 
-	<div class="container">
-		<h1>Pokésir</h1>
+<div class="container">
+    <h1>Pokésir</h1>
 
-		<!-- Search -->
-		<div></div>
+    <!-- Search -->
+    <div  ng-controller="myCtrl">
+        {{id}}
+        <form name="myForm">
+            <input ng-model="id"/> </br>
 
-		<!-- Pokémon information -->
-		<div></div>
+            <select name="repeatSelect" id="repeatSelect" ng-model="list.model">
+                <option ng-repeat="poke in list.poke | filter:searchText" value="{{poke.id}}">{{poke.name}}</option>
+            </select>
 
-	</div>
+            model = {{list.model}}
+            </br>
+            <button ng-click="$log.log(list.model)">Go</button>
 
-    <!-- Dependencies -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-resource.min.js"></script>
+        </form>
+    </div>
 
-    <!-- Pokedex app -->
-    <script src="js/pokedex.js"></script>
+    <!-- Pokémon information -->
+    <div ng-controller="httpCtrl">
+        {{data}}
+    </div>
+
+</div>
+
+<!-- Dependencies -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+
+<!-- Pokedex app -->
+<script src="js/pokedex.js"></script>
 
 
 </body>
